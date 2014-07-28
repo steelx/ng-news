@@ -1,23 +1,21 @@
+/* global app:true */
 'use strict';
-
 /**
  * @Ajinkya Borade
  * www.ajinkyaxjs.com
  */
-var app = angular.module('workspaceApp', [
-    'ngAnimate',
+var app = angular.module('ngnews', [
     'ngCookies',
     'ngResource',
     'ngRoute',
-    'ngSanitize',
-    'ngTouch'
+    'ngSanitize'
   ]);
 
 app.config(['$routeProvider', function ($routeProvider) {
     $routeProvider
     .when('/', {
-        templateUrl: 'views/main.html',
-        controller: 'MainCtrl'
+        templateUrl: 'views/posts.html',
+        controller: 'PostsCtrl'
     })
     .otherwise({
         redirectTo: '/'
