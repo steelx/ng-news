@@ -8,8 +8,11 @@ var app = angular.module('ngnews', [
     'ngCookies',
     'ngResource',
     'ngRoute',
-    'ngSanitize'
+    'ngSanitize',
+    'firebase'
   ]);
+
+app.constant('FIREBASE_URL', 'https://ngnews-fire.firebaseio.com/');
 
 app.config(['$routeProvider', function ($routeProvider) {
     $routeProvider
