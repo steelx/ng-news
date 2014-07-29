@@ -2,6 +2,25 @@
 * Service
 * post.js
 */
-app.factory('Post', ['$resource', function($resource){
-    return $resource('https://ngnews-fire.firebaseio.com/posts/:id.json');
+app.factory('Post', ['$firebase', 'FIREBASE_URL', function($firebase, FIREBASE_URL){
+    var ref = new Firebase(FIREBASE_URL + 'posts');
+    
+    var posts = $firebase(ref);
+    
+    var Post = {
+        
+        all: posts,
+        create: function(post){
+            return posts.$add(post);
+        },
+        find: function(postId){
+            return posts.$child(postId);
+        },
+        delete: function(postId){
+        	return posts.$remove(postId);
+    	}
+        
+    };
+    
+    return Post;
 }]);
