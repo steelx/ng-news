@@ -1,12 +1,12 @@
 'use strict';
 
-app.controller('PostsCtrl', ['$scope',
-	function($scope){
-        $scope.posts = [];
+app.controller('PostsCtrl', ['$scope','Post'
+	function($scope, Post){
+        $scope.posts = Post.get();
         $scope.post = {url: 'http://', title: ''};
         
         $scope.submitPost = function(){
-            $scope.posts.push($scope.post);
+            Post.save($scope.post);
             $scope.post = {url: 'http://', title: ''};           
         };
         
