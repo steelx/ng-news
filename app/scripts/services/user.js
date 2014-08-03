@@ -34,7 +34,7 @@ app.factory('User', ['$firebase', 'FIREBASE_URL', 'Auth', '$rootScope', '$fireba
                 return $rootScope.currentUser;
             },
             
-            getCurrent: function(){
+            signedIn: function(){
                 return $rootScope.currentUser !== undefined;
             }
         };

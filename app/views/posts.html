@@ -27,11 +27,12 @@
     <h4 class="sub-header">User submited content</h4>
     
     <div class="row">
-        <div class="col-xs-12" ng-repeat="(postId, post) in posts | orderByPriority">
+        <div class="col-xs-12" ng-repeat="(postId, post) in posts">
             <div class="block">
-                <h3><a href="{{post.url}}" class="text-success" target="_blank">{{post.title}}</a> &nbsp; <span class="block-options pull-right"><a href="javascript:void(0)" ng-click="deletePost(postId)" class="btn btn-alt btn-sm btn-danger btn-option" data-toggle="tooltip" title="" data-original-title="Delete"><i class="fa fa-times"></i></a></span></h3>
+                <h3><a href="{{post.url}}" class="text-success" target="_blank">{{post.title}}</a></h3>
+                <p><span class="block-options pull-right"><a href="#" ng-click="deletePost(postId)" ng-show="signedIn() && post.owner === currentUser.username" class="btn btn-alt btn-sm btn-danger btn-option" data-toggle="tooltip" title="" data-original-title="Delete"><i class="fa fa-times"></i></a></span></p>
                 <p><code>{{post.url | hostnameFromUrl}}</code></p>
-                <p><span class="badge">Comments <a href="#/posts/{{ postId }}" class="text-danger">(Click Here)</a></span></p>
+                <p><span>submitted by <a href="#/users/{{ post.owner }}">{{ post.owner }}</a></span> | <span class="badge">Comments <a href="#/posts/{{ postId }}" class="text-danger">(Click Here)</a></span></p>
             </div>
         </div>
     </div>
