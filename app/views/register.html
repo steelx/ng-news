@@ -1,6 +1,14 @@
 <div class="row">
+    <div class="col-md-12" ng-show="error">
+        <div class="alert alert-danger alert-dismissable">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+            <h4><i class="fa fa-times-circle"></i> Error</h4> Oh no! Something went wrong. Please try again.
+        </div>
+    </div>
     <div class="col-md-6">
+
         <div class="block">
+
             <div class="block-title">
                 <div class="block-options pull-right">
                     <a href="javascript:void(0)" class="btn btn-alt btn-sm btn-default toggle-bordered enable-tooltip" data-toggle="button" title="" data-original-title="Toggles .form-bordered class">No Borders</a>
@@ -43,19 +51,21 @@
     <!-- Registration END -->
 
     <div class="col-md-6">
+
         <div class="block">
+
             <div class="block-title">
                 <div class="block-options pull-right">
                     <a href="javascript:void(0)" class="btn btn-alt btn-sm btn-default toggle-bordered enable-tooltip" data-toggle="button" title="" data-original-title="Toggles .form-bordered class">No Borders</a>
                 </div>
                 <h2><strong>Login</strong> <small>(if already registered)</small></h2>
             </div>
-            <form action="#" class="form-horizontal form-bordered">
+            <form class="form-horizontal form-bordered" ng-submit="login()">
                 <div class="form-group">
                     <div class="col-md-12">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="gi gi-parents"></i></span>
-                            <input type="text" id="user-username" name="user-username" class="form-control" placeholder="Username">
+                            <input type="text" id="user-username" name="user-username" class="form-control" placeholder="Username" ng-model="user.email">
                         </div>
                     </div>
                 </div>
@@ -63,7 +73,7 @@
                     <div class="col-md-12">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="gi gi-asterisk"></i></span>
-                            <input type="email" id="user-password" name="user-password" class="form-control" placeholder="Password">                            
+                            <input type="password" id="user-password" name="user-password" class="form-control" placeholder="Password" ng-model="user.password">
                         </div>
                     </div>
                 </div>

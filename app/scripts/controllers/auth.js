@@ -21,6 +21,8 @@ app.controller('AuthCtrl', ['$scope', '$location', 'Auth',
                 //After user successful Login
                 console.log(loggedinUser);
                 $location.path('/');
+            }, function(error){
+                $scope.error = error.toString();
             });
             
         };
@@ -30,6 +32,8 @@ app.controller('AuthCtrl', ['$scope', '$location', 'Auth',
                 //After user successfuly registered
                 console.log(authUser);
                 $location.path('/');
+            }, function(error){
+                $scope.error = error.toString();
             });
         };
     }
