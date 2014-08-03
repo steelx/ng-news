@@ -4,9 +4,9 @@
 * post.js
 */
 app.factory('Post', ['$firebase', 'FIREBASE_URL', function($firebase, FIREBASE_URL){
-    var ref = new Firebase(FIREBASE_URL + 'posts');
+    var ref = new Firebase(FIREBASE_URL + 'posts');//creates posts object on root of url
     
-    var posts = $firebase(ref);
+    var posts = $firebase(ref);//we get posts Object from firebase
     
     var Post = {
         
