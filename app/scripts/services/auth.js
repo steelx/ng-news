@@ -13,7 +13,21 @@ app.factory('Auth',['$firebaseSimpleLogin', 'FIREBASE_URL', '$rootScope',
         var auth = $firebaseSimpleLogin(ref);
         
         var Auth = {
+            register: function(user){
+                return auth.$createUser(user.email, user.password);
+            },
             
+            signedIn: function(){
+                return auth.user !== null;
+            },
+            
+            logout: function(){
+                return auth.$logout();
+            }
+        };
+        
+        $rootScope.signedIn = function(){
+            return Auth.signedIn();
         };
         
         return Auth;
