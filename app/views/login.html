@@ -1,0 +1,34 @@
+<div class="row">
+
+    <div class="col-sm-5 col-sm-offset-3">
+        <div class="block">
+            <div class="block-title">
+                <h2><strong>Login</strong></h2> <small><a href="#/register">If New user, click here to Sign-Up</a></small>
+            </div>
+            <form class="form-horizontal form-bordered" ng-submit="login()">
+                <div class="form-group">
+                    <div class="col-md-12">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="gi gi-parents"></i></span>
+                            <input type="text" class="form-control" placeholder="Email" ng-model="user.email">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-12">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="gi gi-asterisk"></i></span>
+                            <input type="password" class="form-control" placeholder="Password" ng-model="user.password">                            
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group form-actions">
+                    <div class="col-xs-12">
+                        <button type="submit" class="btn btn-default pull-right">Login</button>                        
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

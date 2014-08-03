@@ -11,6 +11,20 @@ app.controller('AuthCtrl', ['$scope', '$location', 'Auth',
             $location.path('/');//redirect to homepage if user already logged in.
         }
         
+        //Login check for hard page reload
+        $scope.$on('$firebaseSimpleLogin:login', function(){
+            $location.path('/');//redirect to homepage if user already logged in.
+        });
+        
+        $scope.login = function(){
+            Auth.login($scope.user).then(function(loggedinUser){
+                //After user successful Login
+                console.log(loggedinUser);
+                $location.path('/');
+            });
+            
+        };
+        
         $scope.register = function(){
             Auth.register($scope.user).then(function(authUser){
                 //After user successfuly registered

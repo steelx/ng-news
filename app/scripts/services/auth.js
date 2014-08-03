@@ -21,6 +21,10 @@ app.factory('Auth',['$firebaseSimpleLogin', 'FIREBASE_URL', '$rootScope',
                 return auth.user !== null;
             },
             
+            login: function(user){
+                return auth.$login('password', user);//Password method with user.email user.password
+            },
+            
             logout: function(){
                 return auth.$logout();
             }
