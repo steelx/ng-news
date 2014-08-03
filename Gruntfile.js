@@ -37,7 +37,7 @@ module.exports = function (grunt) {
         files: ['<%= yeoman.app %>/scripts/{,*/}*.js'],
         tasks: ['newer:jshint:all'],
         options: {
-          livereload: 30000
+          livereload: '<%= connect.options.livereload %>'
         }
       },
       jsTest: {
@@ -53,7 +53,7 @@ module.exports = function (grunt) {
       },
       livereload: {
         options: {
-          livereload: 30000
+          livereload: '<%= connect.options.livereload %>'
         },
         files: [
           '<%= yeoman.app %>/{,*/}*.html',
