@@ -1,5 +1,8 @@
 'use strict';
-
+/**
+* Controller
+* posts.js
+*/
 app.controller('PostsCtrl', ['$scope','Post',
 	function($scope, Post){
         $scope.posts = Post.all;
