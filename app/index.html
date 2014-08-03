@@ -37,11 +37,11 @@
                         <div class="sidebar-section sidebar-user clearfix" ng-show="signedIn()">
                             <div class="sidebar-user-avatar">
                                 <a href="./page_ready_user_profile.php.html">
-                                    <img src="./img/placeholders/avatars/avatar2.jpg" alt="avatar">
+                                    <img ng-src="http://www.gravatar.com/avatar/{{ currentUser.md5_hash }}" alt="{{ currentUser.username }}">
                                 </a>
                             </div>
 
-                            <div class="sidebar-user-name">Ajinkya Borade</div>
+                            <div class="sidebar-user-name">{{ currentUser.username }}</div>
 
                             <div class="sidebar-user-links">
                                 <a href="#" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Profile"><i class="gi gi-user"></i></a>
@@ -82,7 +82,7 @@
 
                     <li class="dropdown">
                         <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown">
-                            <img src="./img/placeholders/avatars/avatar2.jpg" alt="avatar"> <i class="fa fa-angle-down"></i>
+                            <img ng-src="http://www.gravatar.com/avatar/{{ currentUser.md5_hash }}" alt="{{ currentUser.username }}"> <i class="fa fa-angle-down"></i>
                         </a>
                         <ul class="dropdown-menu dropdown-custom dropdown-menu-right">
                             <li class="dropdown-header text-center">Account</li>
@@ -122,7 +122,7 @@
                                     <i class="fa fa-user fa-fw pull-right"></i>
                                     Register
                                 </a>
-                                <a href="#/login" data-toggle="modal">
+                                <a href="#/login">
                                     <i class="fa fa-cog fa-fw pull-right"></i>
                                     Login
                                 </a>
