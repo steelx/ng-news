@@ -26,49 +26,50 @@
 
     <!-- Add your site or application content here -->
     <div id="page-container">
-       	<div id="sidr">
-        	<div id="sidebar">
-            <div class="sidebar-scroll">
-                <div class="sidebar-content">
-                    <a href="./index.php.html" class="sidebar-brand">
-                        <i class="gi gi-flash"></i><strong>JavaScript</strong>NEWS
-                    </a>
+        <div id="sidr" ng-controller="NavCtrl">
+            <div id="sidebar">
+                <div class="sidebar-scroll">
+                    <div class="sidebar-content">
+                        <a href="./index.php.html" class="sidebar-brand">
+                            <i class="gi gi-flash"></i><strong>JavaScript</strong>NEWS
+                        </a>
 
-                    <div class="sidebar-section sidebar-user clearfix">
-                        <div class="sidebar-user-avatar">
-                            <a href="./page_ready_user_profile.php.html">
-                                <img src="./img/placeholders/avatars/avatar2.jpg" alt="avatar">
-                            </a>
+                        <div class="sidebar-section sidebar-user clearfix" ng-show="signedIn()">
+                            <div class="sidebar-user-avatar">
+                                <a href="./page_ready_user_profile.php.html">
+                                    <img src="./img/placeholders/avatars/avatar2.jpg" alt="avatar">
+                                </a>
+                            </div>
+
+                            <div class="sidebar-user-name">Ajinkya Borade</div>
+
+                            <div class="sidebar-user-links">
+                                <a href="#" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Profile"><i class="gi gi-user"></i></a>
+                                <a href="#" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Messages"><i class="gi gi-envelope"></i></a>
+                                <a href="#modal-user-settings" data-toggle="modal" class="enable-tooltip" data-placement="bottom" title="" data-original-title="Settings"><i class="gi gi-cogwheel"></i></a>
+                                <a href="#" ng-click="logout()" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Logout"><i class="gi gi-exit"></i></a>
+                            </div>
                         </div>
 
-                        <div class="sidebar-user-name">Ajinkya Borade</div>
-
-                        <div class="sidebar-user-links">
-                            <a href="./page_ready_user_profile.php.html" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Profile"><i class="gi gi-user"></i></a>
-                            <a href="./page_ready_inbox.php.html" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Messages"><i class="gi gi-envelope"></i></a>
-                            <a href="#modal-user-settings" data-toggle="modal" class="enable-tooltip" data-placement="bottom" title="" data-original-title="Settings"><i class="gi gi-cogwheel"></i></a>
-                            <a href="./login.php.html" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Logout"><i class="gi gi-exit"></i></a>
-                        </div>
+                        <ul class="sidebar-nav">
+                            <li>
+                                <a href="/" class=" active">Home</a>
+                            </li>
+                            <li ng-show="signedIn()">
+                                <a href="#" ng-click="logout()">Logout</a>
+                            </li>
+                            <li ng-hide="signedIn()">
+                                <a href="#/register">Register/Login</a>
+                            </li>
+                        </ul>
                     </div>
-
-                    <ul class="sidebar-nav">
-                        <li>
-							<a href="./page_ui_grid_blocks.php.html" class=" active">Home</a>
-						</li>
-						<li>
-							<a href="#/login">Login</a>
-						</li>
-						<li>
-							<a href="#/Register">Register</a>
-						</li>
-                    </ul>
                 </div>
             </div>
         </div>
-        </div>
+
 
         <div id="main-container">
-            <header class="navbar navbar-default">
+            <header class="navbar navbar-default" ng-controller="NavCtrl">
                 <ul class="nav navbar-nav-custom">
                     <li>
                         <a href="#sidr" id="sidebar-toggle-lg">
@@ -106,14 +107,24 @@
                           </a>
                             </li>
                             <li class="divider"></li>
-                            <li>
-                                <a href="./page_ready_user_profile.php.html">
+                            <li ng-show="signedIn()">
+                                <a href="#">
                                     <i class="fa fa-user fa-fw pull-right"></i>
                                     Profile
                                 </a>
-                                <a href="#modal-user-settings" data-toggle="modal">
+                                <a href="#" data-toggle="modal" ng-click="logout()">
                                     <i class="fa fa-cog fa-fw pull-right"></i>
                                     Logout
+                                </a>
+                            </li>
+                            <li ng-hide="signedIn()">
+                                <a href="#/register">
+                                    <i class="fa fa-user fa-fw pull-right"></i>
+                                    Register
+                                </a>
+                                <a href="#/register" data-toggle="modal">
+                                    <i class="fa fa-cog fa-fw pull-right"></i>
+                                    Login
                                 </a>
                             </li>
                         </ul>
@@ -126,10 +137,10 @@
 
             <footer class="clearfix">
                 <div class="pull-right">
-                Crafted with <i class="fa fa-heart text-danger"></i> by <a href="http://goo.gl/vNS3I" target="_blank">ajinkya</a>
+                    Crafted with <i class="fa fa-heart text-danger"></i> by <a href="http://goo.gl/vNS3I" target="_blank">ajinkya</a>
                 </div>
                 <div class="pull-left">
-                <span id="year-copy">2014</span> © <a href="#" target="_blank">JavaScriptNEWS</a>
+                    <span id="year-copy">2014</span> © <a href="#" target="_blank">JavaScriptNEWS</a>
                 </div>
             </footer>
         </div>
@@ -161,22 +172,23 @@
     <script src="bower_components/angularfire/angularfire.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
-
+    <script src="scripts/jquery.sidr.min.js"></script>
     <!-- build:js({.tmp,app}) scripts/scripts.js -->
     <script src="scripts/app.js"></script>
     <script src="scripts/controllers/posts.js"></script>
     <script src="scripts/controllers/postview.js"></script>
+    <script src="scripts/controllers/nav.js"></script>
     <script src="scripts/controllers/auth.js"></script>
     <script src="scripts/services/auth.js"></script>
     <script src="scripts/services/post.js"></script>
     <script src="scripts/filters/url.js"></script>
     <!-- endbuild -->
-		<script src="scripts/jquery.sidr.min.js"></script>
-		<script>
-			$(document).ready(function() {
-				$('#sidebar-toggle-lg').sidr();
-			});
-		</script>
+
+    <script>
+        $(function() {
+            $('#sidebar-toggle-lg').sidr();
+        });
+    </script>
 </body>
 
 </html>
