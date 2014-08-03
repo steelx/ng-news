@@ -9,9 +9,8 @@ app.controller('PostsCtrl', ['$scope','Post', '$location', 'Auth',
         $scope.post = {url: 'http://', title: ''};
         
         $scope.submitPost = function(){
-            Post.create($scope.post).then(function(ref){
-           		$location.path('/posts/' + ref.name());
-                console.log(ref);
+            Post.create($scope.post).then(function(postId){
+           		$location.path('/posts/' + postId);
             });
                      
         };
