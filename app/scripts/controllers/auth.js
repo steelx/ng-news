@@ -5,8 +5,8 @@
 */
 'use strict';
 
-app.controller('AuthCtrl', ['$scope', '$location', 'Auth',
-    function($scope, $location, Auth){
+app.controller('AuthCtrl', ['$scope', '$location', 'Auth', 'User',
+    function($scope, $location, Auth, User){
         if(Auth.signedIn()){
             $location.path('/');//redirect to homepage if user already logged in.
         }
@@ -30,6 +30,7 @@ app.controller('AuthCtrl', ['$scope', '$location', 'Auth',
         $scope.register = function(){
             Auth.register($scope.user).then(function(authUser){
                 //After user successfuly registered
+                User.create(authUser, $scope.user.username);
                 console.log(authUser);
                 $location.path('/');
             }, function(error){
