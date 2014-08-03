@@ -30,7 +30,7 @@
         <div class="col-xs-12" ng-repeat="(postId, post) in posts | orderByPriority">
             <div class="block">
                 <h3><a href="{{post.url}}" class="text-success" target="_blank">{{post.title}}</a> &nbsp; <span class="block-options pull-right"><a href="javascript:void(0)" ng-click="deletePost(postId)" class="btn btn-alt btn-sm btn-danger btn-option" data-toggle="tooltip" title="" data-original-title="Delete"><i class="fa fa-times"></i></a></span></h3>
-                <p><code>{{post.url}}</code></p>
+                <p><code>{{post.url | hostnameFromUrl}}</code></p>
                 <p><span class="badge">Comments <a href="#/posts/{{ postId }}" class="text-danger">(Click Here)</a></span></p>
             </div>
         </div>
