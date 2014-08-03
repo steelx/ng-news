@@ -22,14 +22,14 @@
 
 <div class="block">
     <div class="block-title">
-        <h2><strong>Latest</strong> feeds</h2>
+        <h2><strong>Latest</strong> JavaScript News Feeds</h2>
     </div>
-    <h4 class="sub-header">Grid <small><code>.col-xs-*</code> (never collapsing)</small></h4>
+    <h4 class="sub-header">User submited content</h4>
     
     <div class="row">
-        <div class="col-xs-12" ng-repeat="(postId, post) in posts">
+        <div class="col-xs-12" ng-repeat="(postId, post) in posts | orderByPriority">
             <div class="block">
-                <h3><a href="{{post.url}}" class="text-success">{{post.title}}</a> &nbsp; <span class="block-options pull-right"><a href="javascript:void(0)" ng-click="deletePost(postId)" class="btn btn-alt btn-sm btn-danger btn-option" data-toggle="tooltip" title="" data-original-title="Delete"><i class="fa fa-times"></i></a></span></h3>
+                <h3><a href="{{post.url}}" class="text-success" target="_blank">{{post.title}}</a> &nbsp; <span class="block-options pull-right"><a href="javascript:void(0)" ng-click="deletePost(postId)" class="btn btn-alt btn-sm btn-danger btn-option" data-toggle="tooltip" title="" data-original-title="Delete"><i class="fa fa-times"></i></a></span></h3>
                 <p><code>{{post.url}}</code></p>
                 <p><span class="badge">Comments <a href="#/posts/{{ postId }}" class="text-danger">(Click Here)</a></span></p>
             </div>
