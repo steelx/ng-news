@@ -39,12 +39,12 @@
         <h2><strong>Comments</strong></h2>
       </div>
       <div>
-        <ul class="media-list">
+        <ul class="media-list" ng-repeat="(commentId, comment) in comments">
 
           <li class="media">
             <div class="media-body">
-              <a href="#/users/ajinkyax"><strong class="ng-binding">ajinkyax</strong></a>
-              <p>test commment is tesy</p>
+              <a href="#/posts/{{comment.postId}}"><strong>Comments</strong></a>
+              <p>{{comment.text}}</p>
             </div>
           </li>
 

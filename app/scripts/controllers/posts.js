@@ -6,7 +6,7 @@
 app.controller('PostsCtrl', ['$scope','Post', '$location', 'Auth',
 	function($scope, Post, $location, Auth){
         if($location.path('/')){
-					$scope.posts = Post.all;
+					$scope.posts = Post.all;//added location condition else otherwise it will load all posts on user profile
 				}
         $scope.post = {url: 'http://', title: ''};
 
