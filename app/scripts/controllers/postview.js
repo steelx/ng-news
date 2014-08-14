@@ -9,7 +9,7 @@ app.controller('PostViewCtrl',['$scope', '$routeParams', 'Post',
     	$scope.post = Post.find($routeParams.postId);
 
       $scope.addComment = function(){
-        Post.addComment($routeParams, $scope.comment);
+        Post.addComment($routeParams.postId, $scope.comment);
       };
     }
 ]);
