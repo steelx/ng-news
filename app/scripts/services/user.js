@@ -8,9 +8,9 @@
 app.factory('User', ['$firebase', 'FIREBASE_URL', 'Auth', '$rootScope', '$firebaseSimpleLogin',
 	function($firebase, FIREBASE_URL, Auth, $rootScope, $firebaseSimpleLogin){
         var ref = new Firebase(FIREBASE_URL + 'users');
-        
+
         var users = $firebase(ref);
-        
+
         var User = {
             create: function(authUser, username){
                 users[username] = {
@@ -18,45 +18,45 @@ app.factory('User', ['$firebase', 'FIREBASE_URL', 'Auth', '$rootScope', '$fireba
                     username: username,
                     $priority: authUser.uid
                 };
-                
+
                 users.$save(username).then(function(){
                     setCurrentUser(username);
                 });
             },
-            
+
             findByUsername: function(username){
                 if(username){
                     return users.$child(username);
                 }
             },
-            
+
             getCurrent: function(){
                 return $rootScope.currentUser;
             },
-            
+
             signedIn: function(){
                 return $rootScope.currentUser !== undefined;
             }
         };
-        
+
         function setCurrentUser(username){
             $rootScope.currentUser = User.findByUsername(username);
         }
-        
+
         //Creating event to set setCurrentUser for logins and refreshes
         $rootScope.$on('$firebaseSimpleLogin:login', function(e, authUser){
             var query = $firebase(ref.startAt(authUser.uid).endAt(authUser.uid));//limit our result
-        	
+
             query.$on('loaded', function(){
                 setCurrentUser(query.$getIndex()[0]);
             });
         });
-        
+
         //Event listener for logout
         $rootScope.$on('$firebaseSimpleLogin:logout', function(e, authUser){
             delete $rootScope.currentUser;
         });
-        
+
         return User;
     }
 ]);

@@ -32,30 +32,40 @@ app.factory('Post', ['$firebase', 'FIREBASE_URL', 'User', function($firebase, FI
 
         delete: function(postId){
             if(User.signedIn()){
-        		var post = Post.find(postId);
+          		var post = Post.find(postId);
 
-        		post.$on('loaded', function(){
-        			var user = User.findByUsername(post.owner);
+          		post.$on('loaded', function(){
+          			var user = User.findByUsername(post.owner);
 
-                    posts.$remove(postId).then(function () {
-                        user.$child('posts').$remove(postId);
-                    });
-    			});
-    		}
-    	},
+                posts.$remove(postId).then(function () {
+                    user.$child('posts').$remove(postId);
+                });
+        			});
+        		}
+      	},
 
-      addComment: function(postId, comment){
-        if(User.signedIn()){
-          var user = User.getCurrent();
-          
-          comment.user = user.username;
-          comment.postId = postId;
+        addComment: function(postId, comment){
+          if(User.signedIn()){
+            var user = User.getCurrent();
 
-          posts.$child(postId).$child('comments').$add(comment).then(function(ref){
-            user.$child('comments').$child(ref.name()).$set({id: ref.name(), postId: postId});
-          });
+            comment.username = user.username;
+            comment.postId = postId;
+
+            posts.$child(postId).$child('comments').$add(comment).then(function(ref){
+              user.$child('comments').$child(ref.name()).$set({id: ref.name(), postId: postId});
+            });
+          }
+        },
+
+        deleteComment: function(post, comment, commentId){
+            if(User.signedIn()){
+              var user = User.findByUsername(comment.username);
+
+              post.$child('comments').$remove(commentId).then(function(){
+                user.$child('comments').$remove(commentId);
+              });
+            }
         }
-      }
 
     };
 

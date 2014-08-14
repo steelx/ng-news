@@ -21,12 +21,12 @@
   <ul class="media-list" ng-repeat="(commentId, comment) in post.comments">
 
     <li class="media">
-      <a href="#/users/{{ comment.username }}" class="pull-left">
-        <img ng-src="http://www.gravatar.com/avatar/{{ comment.username.md5_hash }}" class="img-circle">
+      <a href="#/users/{{ comment.username  }}" class="pull-left">
+        <img ng-src="http://www.gravatar.com/avatar/{{ comment.username .md5_hash }}" class="img-circle">
       </a>
       <div class="media-body">
-        <span class="text-muted pull-right"><small><a href="#">delete your comment</a></small></span>
-        <a href="#/users/{{ comment.username }}"><strong>{{ comment.username }}</strong></a>
+        <span class="text-muted pull-right"><small><a ng-click="removeComment(comment, commentId)" ng-show="signedIn() && comment.username === currentUser.username">delete your comment</a></small></span>
+        <a href="#/users/{{ comment.username  }}"><strong>{{ comment.username  }}</strong></a>
         <p>{{ comment.text }}</p>
       </div>
     </li>

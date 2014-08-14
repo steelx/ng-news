@@ -11,5 +11,9 @@ app.controller('PostViewCtrl',['$scope', '$routeParams', 'Post',
       $scope.addComment = function(){
         Post.addComment($routeParams.postId, $scope.comment);
       };
+
+      $scope.removeComment = function(comment, commentId){
+        Post.deleteComment($scope.post, comment, commentId);
+      };
     }
 ]);
