@@ -1,3 +1,8 @@
+<ul class="breadcrumb breadcrumb-top">
+  <li><a href="#/">Home</a></li>
+  <li>{{ user.username }}</li>
+</ul>
+
 <div class="content-header">
   <div class="header-section">
   <h1>
@@ -7,20 +12,45 @@
   </div>
 </div>
 
-<ul class="breadcrumb breadcrumb-top">
-  <li><a href="#/">Home</a></li>
-  <li>{{ user.username }}</li>
-</ul>
-
 <div class="row">
+
   <div class="col-md-6">
     <div class="block">
       <div class="block-title">
-      <h2><strong>Submissions</strong></h2>
+        <h2><strong>Submissions</strong></h2>
       </div>
       <div>
-        content
+        <ul class="media-list" ng-repeat="(postId, post) in posts">
+
+          <li class="media">
+            <div class="media-body">
+              <h4><a href="#/posts/{{postId}}">{{post.title}}</a></h4>
+            </div>
+          </li>
+
+        </ul>
       </div>
     </div>
   </div>
+
+  <div class="col-md-6">
+    <div class="block">
+      <div class="block-title">
+        <h2><strong>Comments</strong></h2>
+      </div>
+      <div>
+        <ul class="media-list">
+
+          <li class="media">
+            <div class="media-body">
+              <a href="#/users/ajinkyax"><strong class="ng-binding">ajinkyax</strong></a>
+              <p>test commment is tesy</p>
+            </div>
+          </li>
+
+        </ul>
+      </div>
+    </div>
+  </div>
+
 </div>
