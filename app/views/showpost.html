@@ -1,6 +1,47 @@
-<div>
-    <a href="{{ post.url }}">{{ post.title }}</a>
+
+<ul class="breadcrumb breadcrumb-top">
+  <li><a href="#/posts">Home</a></li>
+  <li>{{ post.url | hostnameFromUrl }}</li>
+</ul>
+
+<div class="content-header">
+
+  <div class="header-section">
+    <h1>
+      <i class="gi gi-anchor"></i><a href="{{ post.url }}">{{ post.url | hostnameFromUrl }}</a><br><small>{{ post.title }}</small>
+    </h1>
+    <p class="sub-header">shared by <a href="#/users/{{ post.owner }}"><strong>{{ post.owner }}</strong></a> on <strong>January 20, 2014</strong></p>
+  </div>
+
 </div>
 
-<hr>
-<a href="#/posts">Back to homepage.</a>
+<div class="block">
+  <h3 class="sub-header">Comments</h3>
+
+  <ul class="media-list" ng-repeat="(commentId, comment) in post.comments">
+
+    <li class="media">
+      <a href="#/users/{{ comment.username }}" class="pull-left">
+        <img ng-src="http://www.gravatar.com/avatar/{{ comment.username.md5_hash }}" class="img-circle">
+      </a>
+      <div class="media-body">
+        <span class="text-muted pull-right"><small><a href="#">delete your comment</a></small></span>
+        <a href="#/users/{{ comment.username }}"><strong>{{ comment.username }}</strong></a>
+        <p>{{ comment.text }}</p>
+      </div>
+    </li>
+
+  </ul>
+
+  <div class="media-body clearfix">
+    <div ng-hide="signedIn()">
+      <p><a href="#/login">Sign in</a> to post a comment</p>
+    </div>
+
+    <form ng-show="signedIn()">
+      <textarea ng-model="comment.text" class="form-control" rows="3" placeholder="Enter you comment.."></textarea>
+      <input type="submit" ng-click="addComment()" class="btn btn-sm  btn-primary">
+    </form>
+
+  </div>
+</div>
