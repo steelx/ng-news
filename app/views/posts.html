@@ -32,7 +32,7 @@
                 <h3><a href="#/posts/{{ postId }}" class="text-success">{{post.title}}</a></h3>
                 <p><span class="block-options pull-right"><a href="#" ng-click="deletePost(postId)" ng-show="signedIn() && post.owner === currentUser.username" class="btn btn-alt btn-sm btn-danger btn-option" data-toggle="tooltip" title="" data-original-title="Delete"><i class="fa fa-times"></i></a></span></p>
                 <p><code>{{post.url | hostnameFromUrl}}</code></p>
-                <p><span>submitted by <a href="#/users/{{ post.owner }}">{{ post.owner }}</a></span> | <a href="#/posts/{{ postId }}">Comments</a> <span class="badge">-</span></p>
+                <p><span>submitted by <a href="#/users/{{ post.owner }}">{{ post.owner }}</a></span> | <a href="#/posts/{{ postId }}">Comments</a> <span class="badge">{{ postCommentsLength(post) }}</span></p>
             </div>
         </div>
     </div>

@@ -880,6 +880,10 @@ a.gallery-link, a[data-toggle=lightbox-image] {
 .media-feed {
     margin-bottom:0
 }
+.media {
+  background-color: #e9ffe4;
+  padding: 5px;
+}
 .media-feed>.media {
     margin-top:0;
     padding:20px 20px 0;
