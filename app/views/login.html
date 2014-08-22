@@ -1,13 +1,17 @@
 <div class="row">
 
     <div class="col-sm-5 col-sm-offset-3">
-        
+
         <div class="block">
             <div class="alert alert-danger alert-dismissable" ng-show="error">
                 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
                 <h4><i class="fa fa-times-circle"></i> Error</h4> Oh no! Wrong username or password!
             </div>
-            
+
+            <div class="alert alert-warning" ng-show="progress">
+                <h4><i class="fa fa-spinner fa-3x fa-spin"></i> Working..</h4>
+            </div>
+
             <div class="block-title">
                 <h2><strong>Login</strong></h2> <small><a href="#/register">If New user, click here to Sign-Up</a></small>
             </div>
@@ -24,14 +28,14 @@
                     <div class="col-md-12">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="gi gi-asterisk"></i></span>
-                            <input type="password" class="form-control" placeholder="Password" ng-model="user.password">                            
+                            <input type="password" class="form-control" placeholder="Password" ng-model="user.password">
                         </div>
                     </div>
                 </div>
 
                 <div class="form-group form-actions">
                     <div class="col-xs-12">
-                        <button type="submit" class="btn btn-default pull-right">Login</button>                        
+                        <button type="submit" class="btn btn-default pull-right">Login</button>
                     </div>
                 </div>
             </form>
