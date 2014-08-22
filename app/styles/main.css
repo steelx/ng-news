@@ -2035,3 +2035,7 @@ code {
         line-height:1.9
     }
 }
+
+.commentsBlock {
+  padding-bottom:25px;
+}

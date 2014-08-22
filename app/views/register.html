@@ -5,14 +5,17 @@
             <h4><i class="fa fa-times-circle"></i> Error</h4> Oh no! Something went wrong. Please try again.
         </div>
     </div>
+    <div class="col-md-12" ng-show="progress">
+        <div class="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+            <h4><i class="fa fa-spinner fa-3x fa-spin"></i> Loading..</h4>
+        </div>
+    </div>
     <div class="col-md-6">
 
         <div class="block">
 
             <div class="block-title">
-                <div class="block-options pull-right">
-                    <a href="javascript:void(0)" class="btn btn-alt btn-sm btn-default toggle-bordered enable-tooltip" data-toggle="button" title="" data-original-title="Toggles .form-bordered class">No Borders</a>
-                </div>
                 <h2><strong>Register</strong> <small>(new use sign-up form)</small></h2>
             </div>
             <form action="" method="post" class="form-horizontal form-bordered" ng-submit="register()">
@@ -55,9 +58,6 @@
         <div class="block">
 
             <div class="block-title">
-                <div class="block-options pull-right">
-                    <a href="javascript:void(0)" class="btn btn-alt btn-sm btn-default toggle-bordered enable-tooltip" data-toggle="button" title="" data-original-title="Toggles .form-bordered class">No Borders</a>
-                </div>
                 <h2><strong>Login</strong> <small>(if already registered)</small></h2>
             </div>
             <form class="form-horizontal form-bordered" ng-submit="login()">
