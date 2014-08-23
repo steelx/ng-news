@@ -19,6 +19,17 @@
     </form>
 </div>
 
+<div class="row" ng-hide="signedIn()">
+    <div class="row">
+      <div class="col-xs-12">
+        <p class="alert alert-info alert-dismissable">
+          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+          Please <a href="#/register">Signup/Login</a> to share your article url.
+        </p>
+      </div>
+    </div>
+</div>
+
 
 <div class="block">
     <div class="block-title">
@@ -26,8 +37,8 @@
     </div>
     <h4 class="sub-header">User submited content</h4>
 
-    <div class="row">
-        <div class="col-xs-12" ng-repeat="(postId, post) in posts">
+    <div class="row postsWrap">
+        <div class="col-xs-12 singlePost" ng-repeat="(postId, post) in posts" data-indexnum="{{$index}}">
             <div class="block">
                 <h3><a href="#/posts/{{ postId }}" class="text-success">{{post.title}}</a></h3>
                 <p><span class="block-options pull-right"><a href="#" ng-click="deletePost(postId)" ng-show="signedIn() && post.owner === currentUser.username" class="btn btn-alt btn-sm btn-danger btn-option" data-toggle="tooltip" title="" data-original-title="Delete"><i class="fa fa-times"></i></a></span></p>

@@ -16,7 +16,6 @@ app.controller('PostsCtrl', ['$scope','Post', '$location', 'Auth',
             Post.create($scope.post).then(function(postId){
            		$location.path('/posts/' + postId);
             });
-
         };
 
         $scope.deletePost = function(postId){
@@ -24,7 +23,7 @@ app.controller('PostsCtrl', ['$scope','Post', '$location', 'Auth',
         };
 
 				$scope.postCommentsLength = function(post){
-					
+
 						if(post.hasOwnProperty('comments')){
 							return Object.keys(post.comments).length;
 						} else {

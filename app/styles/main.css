@@ -2039,7 +2039,14 @@ code {
         line-height:1.9
     }
 }
-
+.postsWrap {
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: column-reverse;
+  flex-direction: column-reverse;
+  -webkit-align-items: flex-start;
+  align-items: flex-start;
+}
 .commentsBlock {
   padding-bottom:25px;
 }
